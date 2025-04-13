@@ -1,0 +1,20 @@
+CREATE DATABASE student_db;
+USE student_db;
+
+CREATE TABLE students (
+    id INT PRIMARY KEY,               
+    name VARCHAR(100) NOT NULL,       
+    email VARCHAR(100) NOT NULL UNIQUE,    
+    department VARCHAR(50) DEFAULT NULL, 
+    major VARCHAR(50) DEFAULT NULL,      
+    dob DATE DEFAULT NULL,               
+    address TEXT DEFAULT NULL             
+);
+
+CREATE TABLE enrollment (
+    student_id INT NOT NULL,  
+    course_code VARCHAR(20) NOT NULL, 
+    course_title VARCHAR(100) NOT NULL,
+    semester VARCHAR(20) NOT NULL,
+    PRIMARY KEY (student_id, course_code)  
+);

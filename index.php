@@ -15,7 +15,13 @@
             background-color: #006081;
             padding: 10px 20px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between; /* Adjust alignment */
+            align-items: center; /* Vertically align items */
+        }
+        .navbar .title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
         }
         .navbar a {
             color: white;
@@ -71,14 +77,18 @@
 </head>
 <body>
 
+    <!-- Ribbon Navigation Bar -->
     <div class="navbar">
-        <a href="add_student.php">Add Student</a>
-        <a href="student_list.php">Student List</a>
-        <a href="enroll_course.php">Enroll in Course</a>
-        <a href="enrollment_history.php">Enrollment History</a>
+        <span class="title">Student Management System</span>
+        <div>
+            <a href="index.php">Add Student</a>
+            <a href="student_list.php">Student List</a>
+            <a href="enroll_course.php">Enroll in Course</a>
+            <a href="enrollment_history.php">Enrollment History</a>
+        </div>
     </div>
 
-
+    <!-- Registration Form -->
     <div class="container">
         <h2>Register New Student</h2>
         <form action="register.php" method="POST">

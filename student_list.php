@@ -1,12 +1,10 @@
 <?php
 include("db_connect.php");
 
-// Fetch all students
 $sql = "SELECT name, id, department, major, email FROM students";
 $result = $conn->query($sql);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete-id"])) {
-    // Delete the student with the provided ID
     $delete_id = $_POST["delete-id"];
     $delete_sql = "DELETE FROM students WHERE id = '$delete_id'";
     if ($conn->query($delete_sql) === TRUE) {
@@ -14,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete-id"])) {
     } else {
         echo "<p style='color: red; text-align: center;'>Error deleting record: " . $conn->error . "</p>";
     }
-    // Refresh the page to show updated results
     header("Location: student_list.php");
     exit();
 }
@@ -37,7 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete-id"])) {
             background-color: #006081;
             padding: 10px 20px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
         }
         .navbar a {
             color: white;
@@ -76,11 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete-id"])) {
             background-color: #006081;
             color: white;
         }
-        .no-data {
-            color: red;
-            font-size: 18px;
-            text-align: center;
-        }
         .action-button {
             padding: 5px 10px;
             background-color: #5bc0de;
@@ -108,10 +106,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete-id"])) {
 <body>
 
     <div class="navbar">
-        <a href="index.php">Add Student</a>
-        <a href="student_list.php">Student List</a>
-        <a href="enroll_course.php">Enroll in Course</a>
-        <a href="enrollment_history.php">Enrollment History</a>
+        <span class="title">Student Management System</span>
+        <div>
+            <a href="index.php">Add Student</a>
+            <a href="student_list.php">Student List</a>
+            <a href="enroll_course.php">Enroll in Course</a>
+            <a href="enrollment_history.php">Enrollment History</a>
+        </div>
     </div>
 
     <div class="container">
@@ -160,3 +161,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete-id"])) {
 
 </body>
 </html>
+

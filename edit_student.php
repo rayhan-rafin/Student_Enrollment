@@ -1,7 +1,7 @@
 <?php
 include("db_connect.php");
 
-// Fetch the student details based on the provided ID
+
 if (isset($_GET["edit-id"])) {
     $edit_id = $_GET["edit-id"];
     $sql = "SELECT id, email, department, major FROM students WHERE id = '$edit_id'";
@@ -16,18 +16,18 @@ if (isset($_GET["edit-id"])) {
     die("Invalid request!");
 }
 
-// Handle form submission to update the student details
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST["id"]; // Ensure ID is passed back
+    $id = $_POST["id"]; 
     $email = trim($_POST["email"]);
     $department = $_POST["department"];
     $major = $_POST["major"];
 
-    // Update only department, major, and email in the database
+
     $update_sql = "UPDATE students SET email='$email', department='$department', major='$major' WHERE id='$id'";
     if ($conn->query($update_sql) === TRUE) {
         echo "<p style='color: green; text-align: center;'>Student details updated successfully!</p>";
-        header("Location: student_list.php"); // Redirect to the Student List page after successful update
+        header("Location: student_list.php"); 
         exit();
     } else {
         echo "<p style='color: red; text-align: center;'>Error updating record: " . $conn->error . "</p>";
@@ -95,7 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <h2>Edit Student Information</h2>
         <form method="POST" action="edit_student.php?edit-id=<?php echo $student['id']; ?>">
-            <!-- Hidden field to store Student ID -->
             <input type="hidden" name="id" value="<?php echo $student['id']; ?>">
 
             <div class="form-group">

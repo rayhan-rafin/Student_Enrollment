@@ -1,15 +1,15 @@
 <?php
-include("db_connect.php"); // Connect to the database
+include("db_connect.php"); 
 
-$search_id = ""; // To capture the Student ID for the search
+$search_id = ""; 
 $result = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search-id"])) {
-    $search_id = trim($_POST["search-id"]); // Get the Student ID from the search form
-    $sql = "SELECT * FROM enrollment WHERE student_id = '$search_id'"; // Search query
-    $result = $conn->query($sql); // Execute the query
+    $search_id = trim($_POST["search-id"]); 
+    $sql = "SELECT * FROM enrollment WHERE student_id = '$search_id'"; 
+    $result = $conn->query($sql); 
 } else {
-    $sql = "SELECT * FROM enrollment"; // Default query to fetch all data
+    $sql = "SELECT * FROM enrollment"; 
     $result = $conn->query($sql);
 }
 ?>
@@ -31,7 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search-id"])) {
             background-color: #006081;
             padding: 10px 20px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
         }
         .navbar a {
             color: white;
@@ -103,19 +109,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search-id"])) {
 </head>
 <body>
 
-    <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="index.php">Add Student</a>
-        <a href="student_list.php">Student List</a>
-        <a href="enroll_course.php">Enroll in Course</a>
-        <a href="enrollment_history.php">Enrollment History</a>
+        <span class="title">Student Management System</span>
+        <div>
+            <a href="index.php">Add Student</a>
+            <a href="student_list.php">Student List</a>
+            <a href="enroll_course.php">Enroll in Course</a>
+            <a href="enrollment_history.php">Enrollment History</a>
+        </div>
     </div>
 
-    <!-- Enrollment History -->
     <div class="container">
         <h2>Enrollment History</h2>
 
-        <!-- Search Form -->
         <form class="search-form" method="POST" action="enrollment_history.php">
             <input type="text" name="search-id" placeholder="Enter Student ID to search..." value="<?php echo htmlspecialchars($search_id); ?>">
             <button type="submit">Search</button>
@@ -152,3 +158,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search-id"])) {
 
 </body>
 </html>
+

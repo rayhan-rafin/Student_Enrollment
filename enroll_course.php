@@ -15,7 +15,13 @@
             background-color: #006081;
             padding: 10px 20px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
         }
         .navbar a {
             color: white;
@@ -71,14 +77,15 @@
 </head>
 <body>
 
-
     <div class="navbar">
-        <a href="index.php">Add Student</a>
-        <a href="student_list.php">Student List</a>
-        <a href="enroll_course.php">Enroll in Course</a>
-        <a href="enrollment_history.php">Enrollment History</a>
+        <span class="title">Student Management System</span>
+        <div>
+            <a href="index.php">Add Student</a>
+            <a href="student_list.php">Student List</a>
+            <a href="enroll_course.php">Enroll in Course</a>
+            <a href="enrollment_history.php">Enrollment History</a>
+        </div>
     </div>
-
 
     <div class="container">
         <h2>Course Enrollment</h2>
