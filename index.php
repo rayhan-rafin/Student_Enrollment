@@ -77,7 +77,6 @@
 </head>
 <body>
 
-    <!-- Ribbon Navigation Bar -->
     <div class="navbar">
         <span class="title">Student Management System</span>
         <div>
@@ -88,7 +87,6 @@
         </div>
     </div>
 
-    <!-- Registration Form -->
     <div class="container">
         <h2>Register New Student</h2>
         <form action="register.php" method="POST">
